@@ -17,7 +17,7 @@ initialization:
   shortwave_radiation: swrad
   #-some-configuration-parameters-------------------------------------------
   repeat_day: 1
-  repeat_year: 10
+  repeat_year: 5
   seconds_per_circle: 300
   is_par: 0 # is par or not, 1 is yes (0 is shortwave radiation)
   #-names-for-relaxation----------------------------------------------------
@@ -25,9 +25,9 @@ initialization:
   relaxation_parameter: 1
   DICrel: none
   Alkrel: none
-  PO4rel: po4
-  NO3rel: no3
-  Sirel: Si
+  PO4rel: none #po4
+  NO3rel: none #no3
+  Sirel: none #Si
   O2rel: none #o2
   CH4rel: Slb
   #-names-for-fluxes--------------------------------------------------------
