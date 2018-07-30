@@ -556,9 +556,9 @@ instances:
     parameters:
       Wsed: 7.0 # Rate of sinking of detritus (m/d)
         # Sinking (Gregoire, Lacroix, 2001)
-      K_sipart_diss: 0.06
+      K_sipart_diss: 0.03 #0.06
         # Si particulate biogenic dissollution rate constant (1/d) 0.08 (Popova,2004)
-      K_sipart_diss_limit: 30.
+      K_sipart_diss_limit: 15. #30.
         # Si particulate maximum concentration (uM), that is biogenic and can be dissolved 
       K_sipart_to_minerals: 0.9
         # Si_part transformation into minerals not modeled here (1/d) (DeMaster, 2003)
