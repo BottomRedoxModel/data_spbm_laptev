@@ -22,12 +22,12 @@ initialization:
   is_par: 0 # is par or not, 1 is yes (0 is shortwave radiation)
   #-names-for-relaxation----------------------------------------------------
   relaxation_file_name: Laptev_average_year_2year.nc
-  relaxation_parameter: 1
+  relaxation_parameter: 0.000001
   DICrel: none
   Alkrel: none
-  PO4rel: none #po4
-  NO3rel: none #no3
-  Sirel: none #Si
+  PO4rel: po4
+  NO3rel: no3
+  Sirel: Si
   O2rel: none #o2
   CH4rel: Slb
   #-names-for-fluxes--------------------------------------------------------
