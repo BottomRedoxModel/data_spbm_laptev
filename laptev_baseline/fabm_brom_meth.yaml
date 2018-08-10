@@ -9,9 +9,9 @@ instances:
     initialization:
       NH4: 5.0
       NO2: 0.0
-      NO3: 5.0
-      PO4: 0.7
-      Si:  10.0
+      NO3: 1.2
+      PO4: 0.5
+      Si:  5.0
 #----------------------------------------------------------------------
   B_EQ:
 #----------------------------------------------------------------------
@@ -21,8 +21,8 @@ instances:
     long_name: carbon
     model: niva/brom_carbon
     initialization:
-      DIC: 2130.0 # total dissolved inorganic carbon (mmol C/m^3)
-      Alk: 2300.0 
+      DIC: 1900.0 # total dissolved inorganic carbon (mmol C/m^3)
+      Alk: 2000.0 
     coupling:
       Kc0:   B_EQ/Kc0
       Kc1:   B_EQ/Kc1
@@ -45,7 +45,7 @@ instances:
       K_caco3_form: 0.0002  
         #! CaCO3 precipitation rate constant (1/d) (wide ranges 
         #  are given in (Luff et al., 2001))
-      Wsed: 7.0 
+      Wsed: 7.0  
         #! Rate of sinking of detritus (m/d), =0.4 (Savchuk, 2002), =5. (Gregoire, Lacroix, 2001), =1-370 (Alldredge, Gotschalk, 1988)
 #----------------------------------------------------------------------
   B_pH:
@@ -100,17 +100,14 @@ instances:
       Bhan:   B_BACT/Bhan
       Hplus:  B_pH/Hplus
     parameters:
-      K_phy_gro: 2.9 #3.0 #2.7 # 4.5 #3. #4.7
-        # Maximum specific growth rate (1/d) = 0.9-1.3 (Savchuk, 2002), 
-        # = 3.(Gregoire, Lacroix, 2001) >!0.5 worked for Berre! 
-      Iopt: 20. ##25.      
-        # Optimal irradiance (W/m2) =50 (Savchuk, 2002)
+      K_phy_gro: 1.7        # Maximum specific growth rate (1/d) = 0.9-1.3 (Savchuk, 2002), 
+                            # = 3.(Gregoire, Lacroix, 2001) 
+      Iopt: 21.             # Optimal irradiance (W/m2) =50 (Savchuk, 2002)
       phy_t_dependence: 2   # select dependence of Phy growth rate on temperature:
                             # (1) ERGOM); (2) for Arctic; (3) ERSEM
-      K_phy_mrt: 0.15 
-        # Specific rate of mortality, (1/d) = 0.3-0.6 (Savchuk, 2002), = 0.05 (Gregoire, Lacroix, 2001)   
+      K_phy_mrt: 0.4        # Specific rate of mortality, (1/d) = 0.3-0.6 (Savchuk, 2002), = 0.05 (Gregoire, Lacroix, 2001)  
       K_phy_exc: 0.10       # Specific rate of excretion, (1/d) = 0.01 (Burchard et al., 2006)
-      K_het_phy_gro: 1.2    #! Max.spec. rate of grazing of Zoo on Phy, (1/d), =0.9 (Gregoire, Lacroix, 2001), =1.5 (Burchard et al., 2006)   was 1.1 
+      K_het_phy_gro: 1.3    #! Max.spec. rate of grazing of Zoo on Phy, (1/d), =0.9 (Gregoire, Lacroix, 2001), =1.5 (Burchard et al., 2006)   was 1.1 
       K_het_phy_lim: 0.5    #! Half-sat.const.for grazing of Zoo on Phy for Phy/Zoo ratio
       K_het_pom_gro: 0.5    #! Max.spec.rate of grazing of Zoo on POP, (1/d), =1.2 (Burchard et al., 2006)
       K_het_bac_gro: 0.24   #0.8 ! Max.spec.rate of grazing of Zoo on bacteria, (1/d) 0.24  (Kopylov 2016 Laptev Sea) 
@@ -133,7 +130,7 @@ instances:
       K_DOML_ox: 0.10       #! Specific rate of oxidation of DOML with O2
       K_DOMR_ox: 0.01       #! Specific rate of oxidation of DOMR with O2
       K_omox_o2: 1.         #! half sat. of o2 for OM mineralization
-      Wsed: 7.0             #! Rate of sinking of detritus (m/d), =0.4 (Savchuk, 2002), =5. (Gregoire, Lacroix, 2001), =1-370 (Alldredge, Gotschalk, 1988)
+      Wsed: 7.0              #! Rate of sinking of detritus (m/d), =0.4 (Savchuk, 2002), =5. (Gregoire, Lacroix, 2001), =1-370 (Alldredge, Gotschalk, 1988)
       Wphy: 0.2             #! Rate of sinking of Phy (m/d), =0.1-0.5 (Savchuk, 2002)
       Whet: 0.3             #! Rate of sinking of Het (m/d), =1. (Yakushev et al., 2007)
       r_n_p: 16.0           #! N[uM]/P[uM]
@@ -313,7 +310,7 @@ instances:
       H2S:    0.0
       S0:     0.0
       S2O3:   0.0
-      SO4:    25000.
+      SO4:    21000.
     coupling:
       NH4: B_NUT/NH4
       NO3: B_NUT/NO3
@@ -554,11 +551,11 @@ instances:
     coupling:
       Si: B_NUT/Si
     parameters:
-      Wsed: 7.0 # Rate of sinking of detritus (m/d)
+      Wsed: 7.0  # Rate of sinking of detritus (m/d)
         # Sinking (Gregoire, Lacroix, 2001)
       K_sipart_diss: 0.03 #0.06
         # Si particulate biogenic dissollution rate constant (1/d) 0.08 (Popova,2004)
-      K_sipart_diss_limit: 15. #30.
+      K_sipart_diss_limit: 10. #30.
         # Si particulate maximum concentration (uM), that is biogenic and can be dissolved 
       K_sipart_to_minerals: 0.9
         # Si_part transformation into minerals not modeled here (1/d) (DeMaster, 2003)
@@ -575,7 +572,7 @@ instances:
     coupling:
       SO4: B_S/SO4
     parameters:
-      Wsed: 5.0 # Rate of sinking of detritus (m/d)
+      Wsed: 7.0  # Rate of sinking of detritus (m/d)
         # Sinking (Gregoire, Lacroix, 2001)
 #----------------------------------------------------------------------
 #  B_Ni:
@@ -606,7 +603,7 @@ instances:
 #        # FeS[uM]/Ni[uM] partitioning coeff. for FeS (REF)
 #      r_fes2_ni: 600.
 #        # FeS2[uM]/Ni[uM] partitioning coeff. for FeS2 (REF)
-#      Wsed: 5.0 
+#      Wsed: 7.0  
 #        #! Rate of sinking of detritus (m/d), =0.4 (Savchuk, 2002), 
 #        # =5. (Gregoire, Lacroix, 2001), =1-370 (Alldredge, Gotschalk, 1988)
 #      Wphy: 0.2

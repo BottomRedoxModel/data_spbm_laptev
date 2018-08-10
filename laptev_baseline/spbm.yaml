@@ -17,22 +17,25 @@ initialization:
   shortwave_radiation: swrad
   #-some-configuration-parameters-------------------------------------------
   repeat_day: 1
-  repeat_year: 5
+  repeat_year: 3
   seconds_per_circle: 300
   is_par: 0 # is par or not, 1 is yes (0 is shortwave radiation)
   #-names-for-relaxation----------------------------------------------------
   relaxation_file_name: Laptev_average_year_2year.nc
-  relaxation_parameter: 0.000001
+  relaxation_parameter: 0.5
   DICrel: none
   Alkrel: none
-  PO4rel: po4
-  NO3rel: no3
-  Sirel: Si
-  O2rel: none #o2
+  PO4rel: none
+  NO3rel: none
+  Sirel: none 
+  O2rel: none 
   CH4rel: Slb
   #-names-for-fluxes--------------------------------------------------------
   CH4flux: none 
-  DONflux: none
+  DOMLflux: none
+  DOMRflux: none
+  POMLflux: none
+  POMRflux: none
   #-ice-parameters----------------------------------------------------------
   required_volume: 0.072 # brine cells volume to enable convection in ice
   ice_algae_velocity: 3 # cm per day
@@ -45,7 +48,7 @@ initialization:
   resolution_bbl: 0.1
   width_sediments: 0.1
   resolution_sediments: 0.02
-  ice_layers_resolution: 0.06
+  ice_layers_resolution: 0.03
   #-SPBM-needs-to-know-some-variable-names-(according-to-fabm.yaml)---------
   #-----------TheNameOfParameter: InstancesName_InitializationName-or-none--
   Alk: B_C_Alk
@@ -54,7 +57,8 @@ initialization:
   NO3: B_NUT_NO3
   Si: B_NUT_Si
   CH4: B_CH4_CH4
-  DON: none
+  DOML: B_BIO_DOML
+  DOMR: B_BIO_DOMR
   #-----------IPBM-needs-to-know-for-bioturbation-calculations--------------
   O2: B_BIO_O2
   #-----------Solid-elements------------------------------------------------
