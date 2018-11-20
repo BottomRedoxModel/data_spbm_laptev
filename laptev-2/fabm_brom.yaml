@@ -1,0 +1,205 @@
+instances:
+  B_EQ:
+    long_name: equilibrium_constÌants
+    model: niva/brom_eq_constants
+  B_pH:
+    long_name: pH
+    model: niva/brom_pH
+    coupling:
+      Kc1:      B_EQ/Kc1
+      Kc2:      B_EQ/Kc2
+      Kb:       B_EQ/Kb
+      Kp1:      B_EQ/Kp1
+      Kp2:      B_EQ/Kp2
+      Kp3:      B_EQ/Kp3
+      KSi:      B_EQ/KSi
+      Knh4:     B_EQ/Knh4
+      Kh2s:     B_EQ/Kh2s
+      kso4:     B_EQ/kso4
+      kflu:     B_EQ/kflu
+      Kw:       B_EQ/Kw
+      tot_free: B_EQ/tot_free
+      DIC:      B_C/DIC
+      Alk:      B_C/Alk
+      PO4:      B_NUT/PO4
+      Si:       B_NUT/Si
+      NH4:      B_NUT/NH4
+  B_NUT:
+    long_name: main_nutrients
+    model: niva/brom_main_nutrients
+    initialization:
+      NH4: 0.1
+      NO2: 0.1
+      NO3: 8.
+      PO4: 0.65
+      Si:  8.5
+  B_C:
+    long_name: carbon
+    model: niva/brom_carbon
+    initialization:
+      DIC: 2230.0 # total dissolved inorganic carbon (mmol C/m^3)
+      Alk: 2300.0 
+    coupling:
+      Kc0:   B_EQ/Kc0
+      Kc1:   B_EQ/Kc1
+      Kc2:   B_EQ/Kc2
+      Hplus: B_pH/Hplus
+  B_BIO:
+    long_name: bio
+    model: niva/brom_bio
+    initialization:
+      Phy: 1.
+      Het: 1.
+      POML: 1.
+      POMR: 1.
+      DOML: 0.0
+      DOMR: 0.0
+      O2:  360.
+    coupling:
+      PO4:    B_NUT/PO4
+      Si:     B_NUT/Si
+      NH4:    B_NUT/NH4
+      NO2:    B_NUT/NO2
+      NO3:    B_NUT/NO3
+      DIC:    B_C/DIC
+      Alk:    B_C/Alk
+    parameters:
+      # Phytoplankton
+      alpha: 0.1            # Photosynthetic efficiecy at low irradiance
+      pbm: 10.0             # Maximum hourly rate of phytosynthesis
+      K_po4_lim: 0.1        # Half-sat. constant for uptake of PO4 by Phy
+      K_si_lim: 0.1         # Half-sat. constant for uptake of Si_lim by Phy
+      K_nox_lim: 0.1        # Half-sat.const. for uptake of NO3+NO2
+      K_nh4_lim: 0.1        # Half-sat.const. for uptake of NH4
+      K_nfix: 0.4           # Maximum specific rate of N-fixation
+      K_phy_mrt: 0.00023    # Specific rate of mortality
+      K_phy_exc: 0.015      # Specific rate of excretion
+      # Heterotrophs
+      K_het_phy_gro: 0.2    # Max.spec. rate of grazing of Zoo on Phy (1/d)
+      K_het_phy_lim: 0.9    # Half-sat.const. on Phy for Phy/Zoo ratio
+      K_het_pom_gro: 0.2    # Max.spec.rate  on POP (detritus) (1/d)
+      K_het_pom_lim: 1.     # Half-sat.const. on POP for POP/Zoo ratio
+      K_het_res: 0.015      # Specific respiration rate
+      K_het_mrt: 0.005      # Maximum specific rate of mortality of Zoo (1/d)
+      Uz: 0.5               # Food absorbency for Zoo(Het)
+      Hz: 0.5               # Ratio betw. diss. and part. excretes of het.
+      # Organic matter
+      K_POML_DOML: 0.15     # Specific rate of Autolysis of POML to DOML
+      K_POMR_DOMR: 0.00001  # Specific rate of Autolysis of POMR to DOMR
+      K_POML_ox: 0.02       # Specific rate of oxidation of POML with O2
+      K_POMR_ox: 0.002      # Specific rate of oxidation of POMR with O2
+      K_DOML_ox: 0.1        # Specific rate of oxidation of DOML with O2
+      K_DOMR_ox: 0.1        # Specific rate of oxidation of DOMR with O2
+      tref: 0.              # Reference temperature at which temperature factor = 1
+      K_omox_o2: 1.         # half sat. of o2 for OM mineralization
+      # Other parameters
+      Wsed: 5.0             # Rate of sinking of detritus (m/d) (1-370) 
+      Wphy: 0.1             # Rate of sinking of Phy (m/d), (0.1-0.5)
+      Whet: 1.              # Rate of sinking of Het (m/d)
+  B_N:
+    long_name: nitrogen_cycle
+    model: niva/brom_nitrogen
+    coupling:
+      NH4: B_NUT/NH4
+      NO2: B_NUT/NO2
+      NO3: B_NUT/NO3
+      PO4: B_NUT/PO4
+      Si:  B_NUT/Si
+      DIC: B_C/DIC
+      Alk: B_C/Alk
+      O2:  B_BIO/O2
+      POML: B_BIO/POML
+      DOML: B_BIO/DOML
+      POMR: B_BIO/POMR
+      DOMR: B_BIO/DOMR
+    parameters:
+      K_nitrif1: 0.1 # Spec.rate of 1st st. of nitrification
+      K_nitrif2: 0.1 # Spec.rate of 2nd st. of nitrification
+      K_annamox: 0.8 # Spec.rate of Anammox (1/d) (Gregoire, Lacroix, 2001)
+      O2s_nf: 5. # Threshold of O2 saturation for nitrification (uM O2)
+      O2s_dn: 10.0 # Threshold of O2 for denitrification, anammox (uM O2)
+      s_OM_refr:  20.0 # Threshold of refractory OM for decay
+      K_omno_no3: 0.1 # Half-saturation of NO3 for OM denitrification
+      K_POML_NO3: 0.0025 # Spec.rate of 1st stage of denitrification
+      K_DOML_NO3: 0.0025 # Spec.rate of 1st stage of denitrification
+      K_POMR_NO3: 0.000125 # Spec.rate of 1st stage of denitrification
+      K_DOMR_NO3: 0.000125 # Spec.rate of 1st stage of denitrification
+      K_omno_no2: 0.1 # Half-saturation of NO2 for OM denitrification
+      K_POML_NO2: 0.0025 # Spec.rate of 2nd stage of denitrification
+      K_DOML_NO2: 0.0025 # Spec.rate of 2nd stage of denitrification
+      K_POMR_NO2: 0.000125 # Spec.rate of 2nd stage of denitrification
+      K_DOMR_NO2: 0.000125 # Spec.rate of 2nd stage of denitrification
+  B_S:
+    long_name: sulfur_cycle
+    model: niva/brom_sulfur
+    initialization:
+      H2S:    0.0
+      S0:     0.0
+      S2O3:   0.0
+      SO4:    1000.
+    coupling:
+      NH4: B_NUT/NH4
+      NO3: B_NUT/NO3
+      PO4: B_NUT/PO4
+      Si:  B_NUT/Si
+      O2:  B_BIO/O2
+      DIC: B_C/DIC
+      Alk: B_C/Alk
+      DOML: B_BIO/DOML
+      DOMR: B_BIO/DOMR
+      POML: B_BIO/POML
+      POMR: B_BIO/POMR
+    parameters:
+      K_s0_disp:  0.001
+      K_hs_ox: 0.5
+      K_hs_no3: 0.8
+      K_s0_ox: 0.02
+      K_s0_no3: 0.9 # Specific rate of oxidation of S0 with NO3
+      K_s2o3_ox: 0.005
+      K_s2o3_no3: 0.01  # Specific rate of oxidation of S2O3 with NO3
+      s_omso_o2: 25.0
+      s_omso_no3: 5.0
+      K_omso_so4: 1 # Half-saturation of SO4 for OM sulfate reduction
+      O2_sr: 5 # Half-saturation of O2
+      NO3_sr: 1 # Half-saturation of NO3
+      K_POML_so4: 0.02
+      K_DOML_so4: 0.1
+      K_POMR_so4: 0.002
+      K_DOMR_so4: 0.1
+  B_CH4:
+    long_name: methane
+    model: niva/brom_methane
+    parameters:
+      s_omso_o2: 25.0
+         # threshold of o2 for OM sulfate reduction
+      s_omso_no3: 5.0
+         # threshold of noX for OM sulfate reduction
+      s_omch_so4: 30.
+         # Threshold of of SO4 for methane production from OM
+      K_DOML_ch4: 0.00014
+         # Specific rate of methane production from DON (Lopes et al., 2011)
+      K_POML_ch4: 0.00014
+         # Specific rate of methane production from POML
+      K_POMR_ch4: 0.000014
+         # Specific rate of methane production from POMR
+      K_DOMR_ch4: 0.000014
+         # Specific rate of methane production from DOMR
+      K_ch4_o2: 0.001
+         # Specific rate of oxidation of CH4 with O2
+      K_ch4_so4: 0.0000274
+         # Specific rate of oxidation of CH4 with SO4
+      s_OM_refr: 10.0   # threshold of refractory OM for decay
+    initialization:
+      CH4: 0.0
+    coupling:
+      DIC: B_C/DIC
+      O2:  B_BIO/O2
+      DOML: B_BIO/DOML
+      DOMR: B_BIO/DOMR
+      POML: B_BIO/POML
+      POMR: B_BIO/POMR
+      NO3: B_NUT/NO3
+      PO4: B_NUT/PO4
+      Si: B_NUT/Si
+      NH4: B_NUT/NH4
+      SO4: B_S/SO4
