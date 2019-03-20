@@ -30,15 +30,15 @@ instances:
     initialization:
       NH4: 0.1
       NO2: 0.1
-      NO3: 8.
-      PO4: 0.65
-      Si:  8.5
+      NO3: 17.6
+      PO4: 1.24
+      Si:  18. 
   B_C:
     long_name: carbon
     model: niva/brom_carbon
     initialization:
-      DIC: 2170.0 # total dissolved inorganic carbon (mmol C/m^3)
-      Alk: 2200.0 
+      DIC: 2230.0 # total dissolved inorganic carbon (mmol C/m^3)
+      Alk: 2300.0 
     coupling:
       Kc0:   B_EQ/Kc0
       Kc1:   B_EQ/Kc1
@@ -183,13 +183,13 @@ instances:
          # Specific rate of methane production from POC
       K_DOC_ch4: 0.000014
          # Specific rate of methane production from DOC
-      K_ch4_o2: 0.01
+      K_ch4_o2: 0.001
          # Specific rate of oxidation of CH4 with O2
       K_ch4_so4: 0.0000274
          # Specific rate of oxidation of CH4 with SO4
       s_OM_refr: 10.0   # threshold of refractory OM for decay
     initialization:
-      CH4: 0.0
+      CH4: 0.0 
     coupling:
       DIC: B_C/DIC
       O2:  B_BIO/O2
