@@ -1,6 +1,6 @@
 initialization:
   fabm_yaml_name: fabm_brom.yaml
-  input_file_name: Laptev_average_year_3year.nc
+  input_file_name: Laptev_Baseline_B.nc
   initialization_since_year: 1948
   latitude: 74.00
   #-names-of-parameters-in-the-input-file-----------------------------------

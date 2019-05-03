@@ -1,5 +1,6 @@
 /laptev_working_directory
-
+*.txt
+*.log
 *_day.nc
 *_year.nc
 *.nc
