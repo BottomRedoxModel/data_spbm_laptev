@@ -1,8 +1,14 @@
 initialization:
+  #-------------------------------------------------------------------------
+  # --- a file name with a biogeochemical model configuration
   fabm_yaml_name: fabm_brom.yaml
-  input_file_name: Laptev_average_year_3year.nc
+  # --- an input data file
+  input_file_name: Laptev_Baseline_B.nc
+  # --- to know where leap years are
   initialization_since_year: 1948
+  # --- to calculate radiation if necessary
   latitude: 74.00
+  #-------------------------------------------------------------------------
   #-names-of-parameters-in-the-input-file-----------------------------------
   depth_on_boundary: depth2
   time: time
@@ -14,52 +20,62 @@ initialization:
   snow_thickness: snow_thick
   ice_surface_temperature: tisrf
   shortwave_radiation: swrad
+  #-------------------------------------------------------------------------
   #-some-configuration-parameters-------------------------------------------
-  repeat_day: 50
-  repeat_year: 10
+  repeat_day: 100
+  repeat_year: 20
   seconds_per_circle: 300
   is_par: 0 # is par or not, 1 is yes (0 is shortwave radiation)
+  #-------------------------------------------------------------------------
   #-names-for-relaxation----------------------------------------------------
-  relaxation_file_name: Laptev_average_year_3year.nc
+  relaxation_file_name: Laptev_Baseline_B.nc
   relaxation_parameter: 0
   #-names-for-relaxation-(how-they-are-called-in-the-relaxation-file)-------
-  PO4rel: none 
+  DICrel: none
+  PO4rel: none
+  NH4rel: none
   NO3rel: none
+  SO4rel: none
   Sirel: none
   O2rel: none
   CH4rel: none
-  DICrel: none
-  #-names-for-fluxes--------------------------------------------------------
+  #-names-for-fluxes-(names-from-the-relaxation-file)-----------------------
   CH4flux: none
-  DOMLflux: none
-  DOMRflux: none
-  POMLflux: none
-  POMRflux: none
+  DOMflux: none
+  DOCflux: none
+  POMflux: none
+  POCflux: none
+  #-------------------------------------------------------------------------
   #-ice-parameters----------------------------------------------------------
   required_volume: 0.072 # brine cells volume to enable convection in ice
   ice_algae_velocity: 3 # cm per day
+  ice_layers_resolution: 0.05
   #-PAR---------------------------------------------------------------------
   background_attenuation: 0.04
   silt_attenuation: 4e-05
-  silt_concentration: 1
+  silt_concentration: 0
   #-sediments-parameters----------------------------------------------------
   width_bbl: 0.5
   resolution_bbl: 0.1
   width_sediments: 0.1
   resolution_sediments: 0.02
   dispersion_coefficient: 0
-  #-ice-parameters----------------------------------------------------------
-  ice_layers_resolution: 0.05
-  #-SPBM-needs-to-know-some-variable-names-(according-to-fabm.yaml)---------
+  max_porosity: 0.75
+  min_porosity: 0.25
+  burial_velocity: 0 #1e-10
+  #-------------------------------------------------------------------------
+  #-SPBM-needs-to-know-some-variable-names-(according-to-the-fabm.yaml)-----
   #-----------TheNameOfParameter: InstancesName_InitializationName-or-none--
   Alk: B_C_Alk
-  PO4: B_NUT_PO4
   DIC: B_C_DIC
+  PO4: B_NUT_PO4
+  NH4: B_NUT_NH4
   NO3: B_NUT_NO3
+  SO4: B_S_SO4
   Si: B_NUT_Si
   CH4: B_CH4_CH4
-  DOML: B_BIO_DOML
-  DOMR: B_BIO_DOMR
+  DOM: B_BIO_DOM
+  DOC: B_BIO_DOC
   #-----------IPBM-needs-to-know-for-bioturbation-calculations--------------
   O2: B_BIO_O2
   #-----------Solid-elements------------------------------------------------
@@ -76,8 +92,8 @@ initialization:
   Sipart: none
   Phy: B_BIO_Phy
   Het: B_BIO_Het
-  POML: B_BIO_POML
-  POMR: B_BIO_POMR
+  POM: B_BIO_POM
+  POC: B_BIO_POC
   #-----------Solid-elements-from-ERSEM-------------------------------------
   SmallPOM: none
   MediumPOM: none
@@ -89,4 +105,4 @@ initialization:
   MicroPhy: none
   MesoZoo: none
   MicroZoo: none
-  NanoFlag: none 
+  NanoFlag: none
