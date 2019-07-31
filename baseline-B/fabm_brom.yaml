@@ -65,35 +65,35 @@ instances:
       Alk:    B_C/Alk
     parameters:
       # Phytoplankton
-      alpha: 0.055          # Photosynthetic efficiecy at low irradiance
-      pbm: 8.0              # Maximum hourly rate of phytosynthesis
-      K_po4_lim: 0.17       # Half-sat. constant for uptake of PO4 by Phy
-      K_si_lim: 0.07        # Half-sat. constant for uptake of Si_lim by Phy
-      K_nox_lim: 9.39       # Half-sat.const. for uptake of NO3+NO2
-      K_nh4_lim: 0.57       # Half-sat.const. for uptake of NH4
+      alpha: 0.1            # Photosynthetic efficiecy at low irradiance
+      pbm: 10.0             # Maximum hourly rate of phytosynthesis
+      K_po4_lim: 0.1       # Half-sat. constant for uptake of PO4 by Phy
+      K_si_lim: 0.1         # Half-sat. constant for uptake of Si_lim by Phy
+      K_nox_lim: 0.1        # Half-sat.const. for uptake of NO3+NO2
+      K_nh4_lim: 0.1        # Half-sat.const. for uptake of NH4
       K_nfix: 0.4           # Maximum specific rate of N-fixation
-      K_phy_mrt: 0.000027   # Specific rate of mortality
+      K_phy_mrt: 0.00023   # Specific rate of mortality
       K_phy_exc: 0.015      # Specific rate of excretion
       # Heterotrophs
-      K_het_phy_gro: 0.136  # Max.spec. rate of grazing of Zoo on Phy (1/d)
-      K_het_phy_lim: 0.219  # Half-sat.const. on Phy for Phy/Zoo ratio
-      K_het_pom_gro: 0.136  # Max.spec.rate  on POP (detritus) (1/d)
-      K_het_pom_lim: 0.219  # Half-sat.const. on POP for POP/Zoo ratio
+      K_het_phy_gro: 0.2  # Max.spec. rate of grazing of Zoo on Phy (1/d)
+      K_het_phy_lim: 0.9  # Half-sat.const. on Phy for Phy/Zoo ratio
+      K_het_pom_gro: 0.2  # Max.spec.rate  on POP (detritus) (1/d)
+      K_het_pom_lim: 1  # Half-sat.const. on POP for POP/Zoo ratio
       K_het_res: 0.015      # Specific respiration rate
-      K_het_mrt: 0.0225     # Maximum specific rate of mortality of Zoo (1/d)
+      K_het_mrt: 0.005     # Maximum specific rate of mortality of Zoo (1/d)
       Uz: 0.5               # Food absorbency for Zoo(Het)
       Hz: 0.5               # Ratio betw. diss. and part. excretes of het.
       # Organic matter
       K_POM_DOM: 0.15       # Specific rate of Autolysis of POM to DOM
-      K_POC_DOC: 0          # Specific rate of Autolysis of POC to DOC
+      K_POC_DOC: 0.00001    # Specific rate of Autolysis of POC to DOC
       K_DOM_ox: 0.2         # Hydrolysis of labile OM
       K_POM_ox: 0.02        # Hydrolysis of resuspended OM
       K_DOC_ox: 0.2         # Oxidation of labile OM
       K_POC_ox: 0.02        # Oxidation of resuspended OM
-      tref: 2.              # Reference temperature at which temperature factor = 1
+      tref: 0.              # Reference temperature at which temperature factor = 1
       K_omox_o2: 1.         # half sat. of o2 for OM mineralization
       # Other parameters
-      Wsed: 2.0             # Rate of sinking of detritus (m/d) (1-370)
+      Wsed: 5.0             # Rate of sinking of detritus (m/d) (1-370)
       Wphy: 0.1             # Rate of sinking of Phy (m/d), (0.1-0.5)
       Whet: 0.1             # Rate of sinking of Het (m/d)
   B_N:

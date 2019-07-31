@@ -23,7 +23,7 @@ initialization:
   #-------------------------------------------------------------------------
   #-some-configuration-parameters-------------------------------------------
   repeat_day: 100
-  repeat_year: 20
+  repeat_year: 10
   seconds_per_circle: 300
   is_par: 0 # is par or not, 1 is yes (0 is shortwave radiation)
   #-------------------------------------------------------------------------
@@ -53,7 +53,7 @@ initialization:
   #-PAR---------------------------------------------------------------------
   background_attenuation: 0.04
   silt_attenuation: 4e-05
-  silt_concentration: 0
+  silt_concentration: 1
   #-sediments-parameters----------------------------------------------------
   width_bbl: 0.5
   resolution_bbl: 0.1
@@ -79,7 +79,7 @@ initialization:
   #-----------IPBM-needs-to-know-for-bioturbation-calculations--------------
   O2: B_BIO_O2
   #-----------Solid-elements------------------------------------------------
-  CaCO3: none
+  CaCO3: B_Ca_CaCO3
   #-----------Solid-elements-from-BROM--------------------------------------
   S0: B_S_S0
   Fe3: none
