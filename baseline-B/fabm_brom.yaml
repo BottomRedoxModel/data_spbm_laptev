@@ -65,7 +65,7 @@ instances:
       Alk:    B_C/Alk
     parameters:
       # Phytoplankton
-      alpha: 0.1            # Photosynthetic efficiecy at low irradiance
+      alpha: 0.2            # Photosynthetic efficiecy at low irradiance
       pbm: 10.0             # Maximum hourly rate of phytosynthesis
       K_po4_lim: 0.1       # Half-sat. constant for uptake of PO4 by Phy
       K_si_lim: 0.1         # Half-sat. constant for uptake of Si_lim by Phy
@@ -75,11 +75,11 @@ instances:
       K_phy_mrt: 0.00023   # Specific rate of mortality
       K_phy_exc: 0.015      # Specific rate of excretion
       # Heterotrophs
-      K_het_phy_gro: 0.2  # Max.spec. rate of grazing of Zoo on Phy (1/d)
-      K_het_phy_lim: 0.9  # Half-sat.const. on Phy for Phy/Zoo ratio
-      K_het_pom_gro: 0.2  # Max.spec.rate  on POP (detritus) (1/d)
+      K_het_phy_gro: 0.1  # Max.spec. rate of grazing of Zoo on Phy (1/d)
+      K_het_phy_lim: 1  # Half-sat.const. on Phy for Phy/Zoo ratio
+      K_het_pom_gro: 0.1  # Max.spec.rate  on POP (detritus) (1/d)
       K_het_pom_lim: 1  # Half-sat.const. on POP for POP/Zoo ratio
-      K_het_res: 0.015      # Specific respiration rate
+      K_het_res: 0.001      # Specific respiration rate
       K_het_mrt: 0.005     # Maximum specific rate of mortality of Zoo (1/d)
       Uz: 0.5               # Food absorbency for Zoo(Het)
       Hz: 0.5               # Ratio betw. diss. and part. excretes of het.
