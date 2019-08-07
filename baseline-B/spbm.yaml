@@ -29,19 +29,19 @@ initialization:
   #-------------------------------------------------------------------------
   #-names-for-relaxation----------------------------------------------------
   relaxation_file_name: Laptev_Baseline_B.nc
-  relaxation_parameter: 0.27 #horizontal diffusion coef, m^2 s^-1
-  dx: 100 # horizontal scale, m
+  relaxation_parameter: 3.82 #horizontal diffusion coef, m^2 s^-1
+  dx: 1000 # horizontal scale, m
   #-names-for-relaxation-(how-they-are-called-in-the-relaxation-file)-------
-  DICrel: none
-  PO4rel: none
+  DICrel: DIC
+  PO4rel: PO4
   NH4rel: none
-  NO3rel: none
+  NO3rel: NO3
   SO4rel: none
   Sirel: none
-  O2rel: none
-  CH4rel: none
+  O2rel: O2
+  CH4rel: CH4
   #-names-for-fluxes-(names-from-the-relaxation-file)-----------------------
-  CH4flux: none
+  CH4flux: Scenario_BS_Basic_seep_flux
   DOMflux: none
   DOCflux: none
   POMflux: none
