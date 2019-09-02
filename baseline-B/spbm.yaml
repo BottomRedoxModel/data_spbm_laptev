@@ -33,6 +33,7 @@ initialization:
   dx: 1000 # horizontal scale, m
   #-names-for-relaxation-(how-they-are-called-in-the-relaxation-file)-------
   DICrel: DIC
+  Alkrel: none
   PO4rel: PO4
   NH4rel: none
   NO3rel: NO3
@@ -46,6 +47,8 @@ initialization:
   DOCflux: none
   POMflux: none
   POCflux: none
+  Alkflux: none
+  DICflux: none
   #-------------------------------------------------------------------------
   #-ice-parameters----------------------------------------------------------
   required_volume: 0.072 # brine cells volume to enable convection in ice
