@@ -183,7 +183,7 @@ instances:
          # Specific rate of methane production from POMR
       K_DOMR_ch4: 0.000014
          # Specific rate of methane production from DOMR
-      K_ch4_o2: 0.001
+      K_ch4_o2: 0.002
          # Specific rate of oxidation of CH4 with O2
       K_ch4_so4: 0.0000274
          # Specific rate of oxidation of CH4 with SO4

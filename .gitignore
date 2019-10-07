@@ -3,3 +3,9 @@
 *.log
 *_day.nc
 *_year.nc
+CMakeFiles/
+*.cmake
+*/modules
+*/fabm
+*/Makefile
+*/SPBM
